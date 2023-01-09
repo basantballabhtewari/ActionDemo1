@@ -11,30 +11,32 @@ on:
 
 jobs:
   build:
+ 
     runs-on: windows-latest
-
-    steps:      
-    - uses: actions/checkout@v2      
-    
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1.1
-    
-    - name: Setup NuGet.exe for use with actions
-      uses: NuGet/setup-nuget@v1.1.1
-      
-    - name:  Restore Nuget Packages
-      run: msbuild WebApplication1/WebApplication1.csproj 
-      
-    - name: Build
-      run: msbuild WebApplication1/WebApplication1.csproj 
-      
+ 
+    steps:
+    - uses: actions/checkout@v1
+      name: Checkout Code
+     
+    - name: Setup MSBuild Path
+      uses: warrenbuckley/Setup-MSBuild@v1
+       
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
+     
+    - name: Restore NuGet Packages
+      run: nuget restore WebApplication1/WebApplication1.sln
+ 
+    - name: Build and Publish Web App
+      run: msbuild WebApplication1/WebApplication1.csproj.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+ 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-       name: Bundle
-       path: 
-           ./_build
-      
+        name: aspnet-mvc-app
+        path: bin\Release\Publish
+
+
       
       
       
