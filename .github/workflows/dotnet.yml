@@ -23,7 +23,8 @@ jobs:
       uses: NuGet/setup-nuget@v1.1.1
       
     - name:  Restore Nuget Packages
-      run: nuget restore WebApplication1/WebApplication1.sln
+      run: msbuild WebApplication2/WebApplication2.csproj /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU"  /p:PublishUrl="../_build"
+
       
     - name: Build
       run: msbuild WebApplication1/WebApplication1.csproj 
