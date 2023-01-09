@@ -26,8 +26,8 @@ jobs:
       run: nuget restore WebApplication1/WebApplication1.sln
       
     - name: Build
-      run: msbuild WebApplication1/WebApplication1.csproj /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
-
+      run: msbuild WebApplication1/WebApplication1.csproj 
+      
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
