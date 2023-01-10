@@ -1,0 +1,27 @@
+name: Deploy to production
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: Name of release to deploy
+        required: true
+        default: v1.0.0
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: npm ci --only=prod
+    - name: Download the release artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: release-${{ github.event.inputs.release }}
+        path: ./_build
+
+    - name: Test artifacr download
+      run: ls -R
