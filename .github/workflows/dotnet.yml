@@ -37,6 +37,7 @@ jobs:
 
   release-project:
     name: Release Project
+    if: github.event.ref== 'refs/heads/main'
     runs-on: windows-2019
     needs: build-project
     steps:
