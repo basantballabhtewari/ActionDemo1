@@ -8,15 +8,16 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+  
 jobs:
   build:
     runs-on: windows-2019
 
     steps:      
-    - uses: actions/checkout@v2      
+    - uses: actions/checkout@v2    
+
     
-    - name: setup-msbuild
+    - name: setup-msbuild 
       uses: microsoft/setup-msbuild@v1.1
     
     - name: Setup NuGet.exe for use with actions
@@ -32,5 +33,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
        name: Bundle
-       path: 
-           ./_build
+       path: ./_build
