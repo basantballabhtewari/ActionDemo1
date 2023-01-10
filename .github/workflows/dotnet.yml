@@ -23,18 +23,14 @@ jobs:
       uses: NuGet/setup-nuget@v1.1.1
       
     - name:  Restore Nuget Packages
-      run: msbuild WebApplication1/WebApplication1.csproj /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU"  /p:PublishUrl="../_build"
+      run: nuget restore WebApplication1/WebApplication1.sln
       
     - name: Build
-      run: msbuild WebApplication1/WebApplication1.csproj 
-      
+      run: msbuild WebApplication1/WebApplication1.sln /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
       with:
        name: Bundle
        path: 
            ./_build
-      
-      
-      
-      
