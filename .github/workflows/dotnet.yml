@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
   
 jobs:
-  build:
+  build-project:
     runs-on: windows-2019
 
     steps:      
@@ -34,3 +34,17 @@ jobs:
       with:
        name: Bundle
        path: ./_build
+
+  release-project:
+    name: Release Project
+    runs-on: windows-2019
+    needs: build-project
+    steps:
+    
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: Bundle
+
+    - name: Test artifacr download
+      run: ls -R
