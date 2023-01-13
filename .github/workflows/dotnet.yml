@@ -31,7 +31,9 @@ jobs:
 
     - name: deleteing
       run: |
+           del "./_build/bin/roslyn/*.*"
            del "./_build/bin/*.*"
+           
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
