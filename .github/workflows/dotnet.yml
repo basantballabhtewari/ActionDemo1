@@ -30,7 +30,9 @@ jobs:
       run: msbuild WebApplication1/WebApplication1.sln /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
 
     - name: deleteing
-      run: rmdir .\build\bin /s /q
+      run: |
+           cd .\build\bin
+           rmdir bin /s /q
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
