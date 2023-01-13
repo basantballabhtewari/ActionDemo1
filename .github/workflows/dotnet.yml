@@ -49,3 +49,6 @@ jobs:
 
     - name: Test artifacr download
       run: ls -R
+    
+    - name: Test artifacr download
+      run: rm bin
