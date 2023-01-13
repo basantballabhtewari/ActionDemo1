@@ -32,7 +32,7 @@ jobs:
     - name: deleteing
       run: |
            cd ./_build
-           rmdir bin /s /q
+           ls
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
