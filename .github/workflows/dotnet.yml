@@ -33,6 +33,7 @@ jobs:
       run: |
            del "./_build/bin/roslyn/*.*"
            del "./_build/bin/*.*"
+           ls ${{ github.workspace }}
            
 
     - name: Upload Artifact
