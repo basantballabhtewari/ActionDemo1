@@ -31,8 +31,7 @@ jobs:
 
     - name: deleteing
       run: |
-           cd ./_build
-           del /bin/*.* 
+           del ./_build/bin/*.* 
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v1.0.0
