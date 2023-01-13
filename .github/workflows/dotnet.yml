@@ -31,7 +31,7 @@ jobs:
 
     - name: deleteing
       run: |
-           cd ./build/bin
+           cd ./_build
            rmdir bin /s /q
 
     - name: Upload Artifact
